@@ -27,9 +27,15 @@ spec:
   clusterConditions:
     - type: ManagedClusterConditionAvailable
       status: "True"
-  #clusters:
-  #- name: cluster1
   clusterSelector:
-    matchLabels:
-      usage: production
-  #clusterReplicas: 1  #Apply to how many matched clusters, default is ALL
+    clusterReplicas: 2
+    matchExpressions:
+    - key: region
+      operator: In
+      values:
+      - datacenter-south
+      - centralus
+      - us-east-1
+      - europe-west3
+    #matchLabels:
+    #  usage:
